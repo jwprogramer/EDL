@@ -1,20 +1,20 @@
 public class lista {
-    private int telefone;
+    private int prioridade;
     private String nome;
     private lista proximo;
 
     lista(){
-        telefone = 0;
+        prioridade = 0;
         proximo = null;
         nome = "";
     }
 
-    public int getTelefone() {
-        return telefone;
+    public int getPrioridade() {
+        return prioridade;
     }
 
-    public void setTelefone(int telefone) {
-        this.telefone = telefone;
+    public void setPrioridade(int prioridade) {
+        this.prioridade = prioridade;
     }
 
     public String getNome() {
