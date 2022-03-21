@@ -3,7 +3,7 @@ public class Prioridade_OrgaoPub {
     int tamanho = 0;
     int i = 0, x = 0;
 
-    Prioridade_OrgaoPub(){
+    Prioridade_OrgaoPub(a){
         primeiro = null;
     }
 
