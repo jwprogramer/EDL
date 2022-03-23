@@ -3,7 +3,7 @@ public class Prioridade_OrgaoPub {
     int tamanho = 0;
     int i = 0, x = 0;
 
-    Prioridade_OrgaoPub(a){
+    Prioridade_OrgaoPub(){
         primeiro = null;
     }
 
@@ -21,14 +21,11 @@ public class Prioridade_OrgaoPub {
                     if(primeiro.getPrioridade() >= valor){
                             novo.setNome(nome);
                             novo.setPrioridade(valor);
-                        while(x <= tamanho){
-                            while(aux.getProximo() == null){
+                        while(aux.getProximo() != null && aux.getPrioridade() <= valor){
                                 novo.setProximo(null);
                                 primeiro.setProximo(novo);
-                            }    
-                            aux = aux.getProximo();
-                            x++;
                         }
+                        aux = aux.getProximo();
                     }else{
                         while(aux.getProximo() != null){
                                 novo.setNome(nome);
