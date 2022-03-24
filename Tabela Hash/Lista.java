@@ -2,7 +2,7 @@
   No inicio;                              // Ponteiro para o inicio da Lista
   int tamanho;                            // Tamanho da lista
  
-  public void inserir(Pessoa info) {     // Metodo para inserir no inicio
+  public void inserir(Chave info) {     // Metodo para inserir no inicio
     No no = new No();                   // Cria um No
     no.info = info;                     // Atribui a informação ao no
     no.proximo = inicio;                // O ponteiro próximo do no inserido aponta para o inicio
@@ -10,7 +10,7 @@
     tamanho++;                          // Incrementa o tamanho
   }
 
-  public Pessoa buscar(int codigo) {     // Metodo buscar pelo codigo
+  public Chave buscar(int codigo) {     // Metodo buscar pelo codigo
     No no = inicio;                     // Vai para o inicio da lista
     while (no != null) {                // Enquanto o no nao for nulo
       if (no.info.codigo == codigo) { // Se o codigo do no for igual ao parametro passado
