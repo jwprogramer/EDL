@@ -1,11 +1,11 @@
 public class Main {                                             // Classe Main
   public static void main(String [] args) {                   // Metodo main
     Hash hash = new Hash(7);                                // Cria uma tabela Hash com operador 4
-      hash.inserir(new Contato(2, "Saulo", "99990000"));      // Insere n elementos
-      hash.inserir(new Contato(6, "Joao", "99009900"));
-      hash.inserir(new Contato(13, "Marta", "99778877"));
-      hash.inserir(new Contato(12, "Roberta", "87872222"));
-      hash.inserir(new Contato(7, "Maria", "77887777"));
+      hash.inserir(new Pessoa(2, "Saulo"));      // Insere n elementos
+      hash.inserir(new Pessoa(6, "Joao"));
+      hash.inserir(new Pessoa(13, "Marta"));
+      hash.inserir(new Pessoa(12, "Roberta"));
+      hash.inserir(new Pessoa(7, "Maria"));
 
     System.out.println(hash);                               // Imprime a tabela Hash e suas listas
   }

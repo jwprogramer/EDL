@@ -10,12 +10,12 @@ public class Hash {            // Classe Hash
     }
 }
 
-  void inserir(Contato contato) {                     // Metodo para inserir um contato
+  void inserir(Pessoa contato) {                     // Metodo para inserir um contato
     int chave = contato.codigo % operador;          // Posicao = resto do codigo /operador
     vetor[chave].inserir(contato);                  // Insere o contato naquela lista
   }
 
-  Contato buscar(int codigo) {                        // Metodo buscar pelo codigo
+  Pessoa buscar(int codigo) {                        // Metodo buscar pelo codigo
     return vetor[codigo % operador].buscar(codigo); // Busca apenas na lista especifica
   }
   
