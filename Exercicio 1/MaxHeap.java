@@ -1,50 +1,39 @@
-// Java program to implement Max Heap
 
-// Main class
 public class MaxHeap {
 	public int[] Heap;
-	public int size;
-	public int maxsize;
+	public int tamanho;
+	public int total;
 
-	// Constructor to initialize an
-	// empty max heap with given maximum
-	// capacity
-	public MaxHeap(int maxsize)
+	public MaxHeap(int total)
 	{
-		// This keyword refers to current instance itself
-		this.maxsize = maxsize;
-		this.size = 0;
-		Heap = new int[this.maxsize];
+		
+		this.total = total;
+		this.tamanho = 0;
+		Heap = new int[this.total];
 	}
 
-	// Method 1
-	// Returning position of parent
-	private int parent(int pos) { return (pos - 1) / 2; }
+	private int pai(int pos) { return (pos) / 2; }
 
-	// Method 2
-	// Returning left children
-	private int leftChild(int pos) { return (2 * pos); }
 
-	// Method 3
-	// Returning left children
-	private int rightChild(int pos)
+	private int filhoEsquerda(int pos) { return (2 * pos); }
+
+
+	private int filhoDireita(int pos)
 	{
-		return (2 * pos) + 1;
+		return ((2 * pos) + 1);
 	}
 
-	// Method 4
-	// Returning true of given node is leaf
-	private boolean isLeaf(int pos)
+
+	private boolean folha(int pos)
 	{
-		if (pos > (size / 2) && pos <= size) {
+		if (pos > (tamanho / 2) && pos <= tamanho) {
 			return true;
 		}
 		return false;
 	}
 
-	// Method 5
-	// Swapping nodes
-	private void swap(int fpos, int spos)
+
+	private void troca(int fpos, int spos)
 	{
 		int tmp;
 		tmp = Heap[fpos];
@@ -52,75 +41,108 @@ public class MaxHeap {
 		Heap[spos] = tmp;
 	}
 
-	// Method 6
-	// Recursive function to max heapify given subtree
 	private void maxHeapify(int pos)
 	{
-		if (isLeaf(pos))
+		if (folha(pos))
 			return;
 
-		if (Heap[pos] < Heap[leftChild(pos)]
-			|| Heap[pos] < Heap[rightChild(pos)]) {
+		if (Heap[pos] < Heap[filhoEsquerda(pos)]
+			|| Heap[pos] < Heap[filhoDireita(pos)]) {
 
-			if (Heap[leftChild(pos)]
-				> Heap[rightChild(pos)]) {
-				swap(pos, leftChild(pos));
-				maxHeapify(leftChild(pos));
+			if (Heap[filhoEsquerda(pos)]
+				> Heap[filhoDireita(pos)]) {
+				troca(pos, filhoDireita(pos));
+				maxHeapify(filhoEsquerda(pos));
 			}
 			else {
-				swap(pos, rightChild(pos));
-				maxHeapify(rightChild(pos));
+				troca(pos, filhoDireita(pos));
+				maxHeapify(filhoDireita(pos));
 			}
 		}
 	}
 
-	// Method 7
-	// Inserts a new element to max heap
-	public void insert(int element)
-	{
-		Heap[size] = element;
-
-		// Traverse up and fix violated property
-		int current = size;
-		while (Heap[current] > Heap[parent(current)]) {
-			swap(current, parent(current));
-			current = parent(current);
-		}
-		size++;
+	public void aumentarPrioridade(int pos, int p){
+		Heap[pos] = Heap[pos] + p;
+		maxHeapify(pos);
 	}
 
-	// Method 8
-	// To display heap
-	public void print()
+	public void diminuirPrioridade(int pos, int p){
+		Heap[pos] = Heap[pos] - p;
+		maxHeapify(pos);
+	}
+
+	public void inserir(int elemento)
+	{
+		Heap[tamanho] = elemento;
+
+	
+		int aux = tamanho;
+		while (Heap[aux] > Heap[pai(aux)]) {
+			troca(aux, pai(aux));
+			aux = pai(aux);
+		}
+		tamanho++;
+	}
+
+	public void imprimir()
 	{
 	
-	for(int i=0;i<size/2;i++){
+	for(int i=0;i<tamanho/2; i++){
 
-			System.out.print("Parent Node : " + Heap[i] );
+			System.out.print("Pai : " + Heap[i] );
 			
-			if(leftChild(i)<size) //if the child is out of the bound of the array
-			System.out.print( " Left Child Node: " + Heap[leftChild(i)]);
+			if(filhoEsquerda(i)<tamanho) 
+			System.out.print( " No - Direita - Filho: " + Heap[filhoEsquerda(i+1)]);
 			
-			if(rightChild(i)<size) //if the right child index must not be out of the index of the array
-				System.out.print(" Right Child Node: "+ Heap[rightChild(i)]);
+			if(filhoDireita(i)<tamanho) 
+				System.out.print(" No - Esquerda - Filho: "+ Heap[filhoDireita(i)]);
 			
-				System.out.println(); //for new line
-			
+				System.out.println(); 
+				
 		}
 		
 	}
 
-	// Method 9
-	// Remove an element from max heap
-	public int extractMax()
+	public int maiorHeap()
 	{
-		int popped = Heap[1];
-		Heap[1] = Heap[size--];
-		maxHeapify(1);
-		return popped;
+		return Heap[0];
 	}
 
-	// Method 10
-	// main dri er method
+	public int removerMaiorHeap()
+	{
+		int maior = Heap[0];
+		for(int i = 0; i < tamanho; i++){
+		Heap[i] = Heap[i+1];
+		}
+		tamanho--; 
+		maxHeapify(tamanho);
+		return maior;
+	}
+
+	public static void main(String [] args)
+	{
+	
+		MaxHeap maxHeap = new MaxHeap(8);
+        
+		maxHeap.inserir(5);
+		maxHeap.inserir(3);
+		maxHeap.inserir(17);
+		maxHeap.inserir(10);
+		maxHeap.inserir(84);
+		maxHeap.inserir(19);
+		maxHeap.inserir(6);
+	
+		maxHeap.imprimir();
+
+
+		System.out.println("O maior valor é " + maxHeap.maiorHeap());
+
+		System.out.println("O maior valor é " + maxHeap.removerMaiorHeap() + " foi removido!");
+
+		maxHeap.aumentarPrioridade(3, 1);
+		maxHeap.diminuirPrioridade(5, 2);
+
+		maxHeap.imprimir();
+	}
 	
 }
