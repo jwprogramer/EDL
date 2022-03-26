@@ -2,20 +2,19 @@
 public class main {
 
 	public static void main(String[] args) {
-		VideoItem [] videoItens = new VideoItem[4];
+		Item [] Itens = new Item[4];
 		
-		videoItens[0] = new VideoItem("Paula");
-		videoItens[1] = new VideoItem("Iramar");
-		videoItens[2] = new VideoItem("Aislania");
-		videoItens[3] = new VideoItem("Alan");
+		Itens[0] = new Item("Paula");
+		Itens[1] = new Item("Iramar");
+		Itens[2] = new Item("Aislania");
+		Itens[3] = new Item("Alan");
 		
-		Iterator videoIterator = new VideoIterator(videoItens);
-		
-		while (videoIterator.hasNext()) {
-            VideoItem menuItem = (VideoItem)videoIterator.next();
-            System.out.println(menuItem.nome);
-        }
+		Iterator Iterator = new ConcretoIterator(Itens);
 
+		while (Iterator.hasNext()) {
+            Item valor = (Item)Iterator.next();
+            System.out.println(valor.nome);
+        }
 			
 	}
 
