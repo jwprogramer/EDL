@@ -14,9 +14,6 @@ public class Hash {
     vetor[chave].inserir(contato);                  
   }
 
-  Chave buscar(int codigo) {                        
-    return vetor[codigo % operador].buscar(codigo); 
-  }
   
   public String toString() {                          
       String out = "";                               
